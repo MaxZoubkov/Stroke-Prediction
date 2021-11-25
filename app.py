@@ -1,5 +1,5 @@
 import flask
-from flask import Flask
+from flask import Flask, url_for, render_template
 import pickle
 import pandas as pd
 
@@ -9,9 +9,9 @@ app = Flask(__name__, template_folder='templates')
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if flask.request.method == 'GET':
-        return(flask.render_template('main.html'))
+        return render_template('main.html')
 
-    elif flask.request.method == 'POST':
+    if flask.request.method == 'POST':
         gender = flask.request.form['gender']
         age = flask.request.form['age']
         hypertension = flask.request.form['hypertension']
@@ -22,6 +22,7 @@ def main():
         avg_glucose_level = flask.request.form['avg_glucose_level']
         bmi = flask.request.form['bmi']
         smoking_status = flask.request.form['smoking_status']
+        # Feeding the model and outputting to the page will be here
 
 
 if __name__ == "__main__":
