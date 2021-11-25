@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- Base template for title, header and footer -->
+
+<html language=en>
+    <head>
+        {% block head %}
+        <link rel="stylesheet" href="style.css">
+        <title>Stroke Prediction - {% block title required %}{% endblock title %}</title>
+        {% endblock head %}
+    </head>    
+
+    <body>
+        {% block body required %}
+
+        {% endblock body %}
+    </body>
+
+    <footer>
+        {% block footer %}
+        <!-- Add footer info here later -->
+        {% endblock footer %}
+    </footer>
+</html>
+
