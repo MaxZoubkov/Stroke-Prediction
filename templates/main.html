@@ -1,132 +1,125 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Index{% endblock title %}
+
+{% block body %}
+    <form action="{{ url_for('main') }}" method="POST">
+        <fieldset>
+            <!-- The values used are based on the dataset's original values, may be changed for the model -->
+
+            <section class="gender">
+                <span>Biological Sex</span>
+
+                <input type="radio" name="gender" id="sex_male" value="Male" required>
+                <label for="sex_male">Male</label>
+
+                <input type="radio" name="gender" id="sex_female" value="Female" required>
+                <label for="sex_female">Female</label>
+            </section>
 
 
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="./style.css">
-        <title>Stroke Prediction</title>    <!-- Tentative title -->
-    </head>
-
-    <body>
-        <form action="{{ url_for('main') }}" method="POST">
-            <fieldset>
-                <!-- The values used are based on the dataset's original values, may be changed for the model -->
-
-                <section class="gender">
-                    <span>Biological Sex</span>
-
-                    <input type="radio" name="gender" id="sex_male" value="Male" required>
-                    <label for="sex_male">Male</label>
-
-                    <input type="radio" name="gender" id="sex_female" value="Female" required>
-                    <label for="sex_female">Female</label>
-                </section>
+            <section class="age">
+                <label for="age">Age</label>
+                <input id="age" name="age" type="number" required min=1 max=100>
+            </section>
 
 
-                <section class="age">
-                    <label for="age">Age</label>
-                    <input id="age" name="age" type="number" required min=1 max=100>
-                </section>
+            <section class="hypertension">
+                <span>Hypertension</span>
+
+                <input type="radio" name="hypertension" id="hypertension_1" value="1" required>
+                <label for="hypertension_1">Yes</label>
+
+                <input type="radio" name="hypertension" id="hypertension_0" value="0" required>
+                <label for="hypertension_0">No</label>
+            </section>
 
 
-                <section class="hypertension">
-                    <span>Hypertension</span>
+            <section class="heart_disease">
+                <span>Heart Disease</span>
 
-                    <input type="radio" name="hypertension" id="hypertension_1" value="1" required>
-                    <label for="hypertension_1">Yes</label>
+                <input type="radio" name="heart_disease" id="heart_disease_1" value="1" required>
+                <label for="heart_disease_1">Yes</label>
 
-                    <input type="radio" name="hypertension" id="hypertension_0" value="0" required>
-                    <label for="hypertension_0">No</label>
-                </section>
-
-
-                <section class="heart_disease">
-                    <span>Heart Disease</span>
-
-                    <input type="radio" name="heart_disease" id="heart_disease_1" value="1" required>
-                    <label for="heart_disease_1">Yes</label>
-
-                    <input type="radio" name="heart_disease" id="heart_disease_0" value="0" required>
-                    <label for="heart_disease_0">No</label>
-                </section>
+                <input type="radio" name="heart_disease" id="heart_disease_0" value="0" required>
+                <label for="heart_disease_0">No</label>
+            </section>
 
 
-                <section class="ever_married">
-                    <span>Married/Divorced</span>
+            <section class="ever_married">
+                <span>Married/Divorced</span>
 
-                    <input type="radio" name="ever_married" id="ever_married_1" value="1" required>
-                    <label for="ever_married_1">Yes</label>
+                <input type="radio" name="ever_married" id="ever_married_1" value="1" required>
+                <label for="ever_married_1">Yes</label>
 
-                    <input type="radio" name="ever_married" id="ever_married_0"  value="0" required>
-                    <label for="ever_married_0">No</label>
-                </section>
-                
+                <input type="radio" name="ever_married" id="ever_married_0"  value="0" required>
+                <label for="ever_married_0">No</label>
+            </section>
+            
 
-                <section class="work_type">
-                    <span>Work Type</span>
+            <section class="work_type">
+                <span>Work Type</span>
 
-                    <input type="radio" name="work_type" id="work_type_private" value="Private" required>
-                    <label for="work_type_private">Private Sector</label>
+                <input type="radio" name="work_type" id="work_type_private" value="Private" required>
+                <label for="work_type_private">Private Sector</label>
 
-                    <input type="radio" name="work_type" id="work_type_self-employed" value="Self-employed" required>
-                    <label for="work_type_self_employed">Self-Employed</label>
+                <input type="radio" name="work_type" id="work_type_self-employed" value="Self-employed" required>
+                <label for="work_type_self_employed">Self-Employed</label>
 
-                    <input type="radio" name="work_type" id="work_type_govt" value="Govt_job" required>
-                    <label for="work_type_govt">Government</label>
+                <input type="radio" name="work_type" id="work_type_govt" value="Govt_job" required>
+                <label for="work_type_govt">Government</label>
 
-                    <input type="radio" name="work_type" id="work_type_children" value="children" required>
-                    <label for="work_type_children">Stay-at-home</label>
+                <input type="radio" name="work_type" id="work_type_children" value="children" required>
+                <label for="work_type_children">Stay-at-home</label>
 
-                    <input type="radio" name="work_type" id="work_type_never_worked" value="Never_worked" required>
-                    <label for="work_type_never_worked">Never worked</label>
-                </section>
-
-
-                <section class="residence">
-                    <span>Residence</span>
-
-                    <input type="radio" name="residence_type" id="residence_rural" value="Rural" required>
-                    <label for="residence_rural">Rural</label>
-
-                    <input type="radio" name="residence_type" id="residence_urban" value="urban" required>
-                    <label for="residence_urban">Urban</label>
-                </section>
+                <input type="radio" name="work_type" id="work_type_never_worked" value="Never_worked" required>
+                <label for="work_type_never_worked">Never worked</label>
+            </section>
 
 
-                <section class="smoking_status">
-                    <span>Smoking Status</span>
+            <section class="residence">
+                <span>Residence</span>
 
-                    <input type="radio" name="smoking_status" id="smoking_status_former" value="formerly smoked" required>
-                    <label for="smoking_status_former">Former Smoker</label>
+                <input type="radio" name="residence_type" id="residence_rural" value="Rural" required>
+                <label for="residence_rural">Rural</label>
 
-                    <input type="radio" name="smoking_status" id="smoking_status_current"  value="smokes" required>
-                    <label for="smoking_status_current">Current Smoker</label>
-
-                    <input type="radio" name="smoking_status" id="smoking_status_never"  value="never smoked" required>
-                    <label for="smoking_status_never">Never Smoked</label>
-
-                    <!-- Might want to remove this option -->
-                    <input type="radio" name="smoking_status" id="smoking_status_unknown"  value="Unknown" required>
-                    <label for="smoking_status_unknown">Unknown</label>
-                </section>
+                <input type="radio" name="residence_type" id="residence_urban" value="urban" required>
+                <label for="residence_urban">Urban</label>
+            </section>
 
 
-                <section class="avg_glucose_level">
-                    <span>Average Glucose Level</span> <!-- Could use a default value of the average of the samples -->
-                    <input type="number" name="avg_glucose_level" id="avg_glucose_level" min=0 max=300 step="0.01" required>
-                </section>
+            <section class="smoking_status">
+                <span>Smoking Status</span>
+
+                <input type="radio" name="smoking_status" id="smoking_status_former" value="formerly smoked" required>
+                <label for="smoking_status_former">Former Smoker</label>
+
+                <input type="radio" name="smoking_status" id="smoking_status_current"  value="smokes" required>
+                <label for="smoking_status_current">Current Smoker</label>
+
+                <input type="radio" name="smoking_status" id="smoking_status_never"  value="never smoked" required>
+                <label for="smoking_status_never">Never Smoked</label>
+
+                <!-- Might want to remove this option -->
+                <input type="radio" name="smoking_status" id="smoking_status_unknown"  value="Unknown" required>
+                <label for="smoking_status_unknown">Unknown</label>
+            </section>
 
 
-                <section class="bmi">
-                    <span>BMI</span>    <!-- Could use a default value -->
-                    <input type="number" name="bmi" id="bmi" min=0 max=100 step=0.1 required>
-                </section>
+            <section class="avg_glucose_level">
+                <span>Average Glucose Level</span> <!-- Could use a default value of the average of the samples -->
+                <input type="number" name="avg_glucose_level" id="avg_glucose_level" min=0 max=300 step="0.01" required>
+            </section>
 
-                <section class="submission">
-                    <input type="submit" value="Submit">
-                </section>
 
-            </fieldset>
-        </form>
-    </body>
-</html>
+            <section class="bmi">
+                <span>BMI</span>    <!-- Could use a default value -->
+                <input type="number" name="bmi" id="bmi" min=0 max=100 step=0.1 required>
+            </section>
+
+            <section class="submission">
+                <input type="submit" value="Submit">
+            </section>
+
+        </fieldset>
+    </form>
+{% endblock body %}
