@@ -15,7 +15,7 @@ def main():
     if flask.request.method == 'POST':
         #app.logger.info(flask.request.form)    # useful to see what is submitted with the form
         
-        X = flask.request.form
+        input_list = flask.request.form
         # app.logger.info(X)
         # gender = flask.request.form['gender']
         # age = flask.request.form['age']
@@ -27,9 +27,12 @@ def main():
         # avg_glucose_level = flask.request.form['avg_glucose_level']
         # bmi = flask.request.form['bmi']
         # smoking_status = flask.request.form['smoking_status']
+
         # Feeding the model and outputting to the page will be here
 
-        return render_template('result.html') # placeholder template
+        result = "some result"  # change to stroke prediction
+
+        return render_template('main.html', input_list=input_list, result=result) # placeholder template
 
 
 @app.route('/about')

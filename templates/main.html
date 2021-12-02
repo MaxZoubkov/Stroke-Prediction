@@ -122,4 +122,18 @@
 
         </fieldset>
     </form>
+
+    {% if input_list %}
+        <ul>
+            {% for item in input_list %}
+                <li> {{ item }} </li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
+    {% if result %}
+        <p> {{ result }} </p>
+    {% endif %}
+
 {% endblock body %}
