@@ -32,6 +32,11 @@ def main():
         return render_template('result.html') # placeholder template
 
 
+@app.route('/about')
+def about():
+    return render_template('result.html') #change to about.html
+
+
 if __name__ == "__main__":
     app.run(debug=True)
         
