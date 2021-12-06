@@ -151,17 +151,20 @@
 
     </form>
 
-    {% if input_list %}
+    <!-- {% if input_dict %}
         <ul>
-            {% for item in input_list %}
+            {% for item in input_dict %}
                 <li style="display: inline-block"> {{ item }} </li>
             {% endfor %}
         </ul>
 
-    {% endif %}
+    {% endif %} -->
 
     {% if result %}
-        <p> {{ result }} </p>
+        <p style="display: inline-block">{{ result }}</p>
+    {% endif %}
+    {% if probability %}  
+        <p style="display: inline-block">{{probability}}</p>
     {% endif %}
 
 {% endblock body %}
