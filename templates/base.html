@@ -14,9 +14,12 @@
 
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="{{ url_for('main') }}">Home</a>
+            <a class="navbar-brand" href="{{ url_for('main') }}">First Aid</a>
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main') }}">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('about') }}">About</a>
                     </li>
@@ -26,7 +29,7 @@
 
         <main style="margin-top: 70px" role="main" class="container">
             <div class="starter-template">
-                {% block body required %}
+                {% block body %}
                 {% endblock body %}
             </div>
         </main>
