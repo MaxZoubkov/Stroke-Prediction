@@ -63,7 +63,7 @@ def main():
         prediction = prediction[0]
         probability = probability[0,1]
 
-        if prediction is 0:
+        if prediction == 1:
           prediction = "High risk of stroke!"
         else:
           prediction = "Low risk of stroke."
