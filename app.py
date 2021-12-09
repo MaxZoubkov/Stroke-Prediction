@@ -67,8 +67,10 @@ def main():
           prediction = "High risk of stroke!"
         else:
           prediction = "Low risk of stroke."
+
+        probability = probability*100
         
-        probability = "Probability of Stroke: " + str(probability*100) + "%"
+        probability = "Probability of Stroke: {:.2f}%".format(probability)
 
         return render_template('main.html', result=prediction, probability=probability) # placeholder template
 
