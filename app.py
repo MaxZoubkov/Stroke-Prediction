@@ -22,46 +22,58 @@ def main():
         input_dict = flask.request.form.to_dict()
         app.logger.info(input_dict)
 
-        with open('model/model.sav', 'rb') as f:
+        with open('model/decision_tree_model.sav', 'rb') as f:
             model = pickle.load(f)
+            app.logger.info(model)
 
+        # feeding the model and outputting to the page
 
-        df = pd.DataFrame(input_dict, index=[0])
+        # original features from dummies used
+        dummies_list = ['gender', 'ever_married', 'work_type', 'Residence_type','smoking_status',]
+        numerical_list = ['age', 'avg_glucose_level', 'bmi']
+        feature_list = ['age','avg_glucose_level','gender_Male','bmi','ever_married_Yes','work_type_Private','work_type_Self-employed','Residence_type_Urban','smoking_status_never smoked','smoking_status_smokes']
+        
+        # create dummies from the input and remove original feature name
+        for dummy in dummies_list:
+            new_dummy = dummy + '_' + input_dict[dummy]
+            input_dict[new_dummy] = 1
+            input_dict.pop(dummy)
+
+        # all input data is string, turn to int
+        for numerical in numerical_list:
+            input_dict[numerical] = float(input_dict[numerical])
+        
+        # if the feature does not exist in the input, then it's a dummy that is false
+        input_list = []
+        for feature in feature_list:
+            if(feature in input_dict):
+                input_list.append(input_dict[feature])
+            else:
+                input_list.append(0)
+        
+        app.logger.info(input_list)
+        
+        df = pd.DataFrame(data=[input_list], columns=[feature_list])
         app.logger.info(df)
+        
 
-        # Feeding the model and outputting to the page will be here
-        # Assuming the model has a member element "model.feature_list"
-        # input_list = []
-        # for key, value in input_dict:
-        #   input_list.append(key + '_' + value)
-        # feature_list = model.feature_list
-        # 
-        # tuple = []
-        # for feature in feature_list:
-        #   if feature in input_list:
-        #       tuple.append(1)
-        #   else:
-        #       tuple.append(0)
-        # model_df = pd.DataFrame(columns=[feature_list])
-        # for s in input_list:
-        #   model_df[s] = 1
+        # prediction here
+        prediction = model.predict(df)
+        probability = model.predict_proba(df)
+        app.logger.info(prediction)
+        app.logger.info(probability)
+        
+        prediction = prediction[0]
+        probability = probability[0,1]
 
+        if prediction is 0:
+          prediction = "High risk of stroke!"
+        else:
+          prediction = "Low risk of stroke."
+        
+        probability = "Probability of Stroke: " + str(probability*100) + "%"
 
-
-
-        # y_pred = model.predict(df)
-        # probability = model.predict_proba(df)
-        # result = y_pred[i]
-        # if result is 0:
-        #   result = "High risk of stroke!"
-        # else:
-        #   result = "Low risk of stroke."
-        #probability = probability[0]
-
-        result = "some result"  # change to stroke prediction
-        probability = "some probability"    # change to stroke probability
-
-        return render_template('main.html', result=result, probability=probability) # placeholder template
+        return render_template('main.html', result=prediction, probability=probability) # placeholder template
 
 
 @app.route('/about')
