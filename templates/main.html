@@ -146,11 +146,15 @@
 
     </form>
 
-    {% if result %}
-        <p style="display: inline-block">{{ result }}</p>
-    {% endif %}
-    {% if probability %}  
-        <p style="display: inline-block">{{probability}}</p>
-    {% endif %}
+        <p style="display: inline-block">
+            {% if result %}
+            {{ result }}
+            {% endif %}
+        </p>
+        <p style="display: inline-block">
+            {% if probability %}
+            {{probability}}
+            {% endif %}
+        </p>
 
 {% endblock body %}
