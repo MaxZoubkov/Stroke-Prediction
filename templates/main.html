@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Index{% endblock title %}
+{% block title %}Stroke Prediction{% endblock title %}
 
 {% block body %}
     <form action="{{ url_for('main') }}" method="POST">
@@ -142,18 +142,9 @@
             </div>
         </div>
 
-        <button style="display: inline-block" type="submit" class="btn btn-dark" value="Submit">Submit</button>
+        <button type="submit" class="btn" value="Submit" style="background-color:rgb(138, 21, 21); color: white">Submit</button>
 
     </form>
-
-    <!-- {% if input_dict %}
-        <ul>
-            {% for item in input_dict %}
-                <li style="display: inline-block"> {{ item }} </li>
-            {% endfor %}
-        </ul>
-
-    {% endif %} -->
 
     {% if result %}
         <p style="display: inline-block">{{ result }}</p>

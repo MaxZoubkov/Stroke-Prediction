@@ -8,18 +8,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Stroke Prediction - {% block title %}{% endblock title %}</title> <!-- Tentative title -->
+        <title>First Aid - {% block title %}{% endblock title %}</title> <!-- Tentative title -->
         {% endblock head %}
     </head>    
 
-    <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <body style="margin-bottom:128px">
+        <nav style="background-color:rgb(138, 21, 21)" class="navbar navbar-expand-md navbar-dark fixed-top">
             <a class="navbar-brand" href="{{ url_for('main') }}">First Aid</a>
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('main') }}">Home</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('about') }}">About</a>
                     </li>
@@ -33,13 +33,35 @@
                 {% endblock body %}
             </div>
         </main>
-
     </body>
 
-    <footer>
-        {% block footer %}
-        <!-- Add footer info here later -->
-        {% endblock footer %}
+    <footer class="footer mt-auto py-3"  style="position: fixed; bottom: 0; text-align:center; width:100%; background-color:rgb(138, 21, 21)">
+        <div class="container">
+            {% block footer %}
+                <ul style="color: white">
+                    <li style="display: inline-block">
+                        <ul>
+                            <li style="list-style-type: none">Max Zoubkov</li>
+                            <li style="list-style-type: none">Email: maxezoubkov@gmail.com</li>
+                            <li style="list-style-type: none">
+                                <a href="https://www.linkedin.com/in/maxzoubkov/" target="_blank" rel="noopener noreferrer" class="badge badge-primary">LinkedIn</a></li>
+                            <li style="list-style-type: none">
+                                <a href="https://github.com/MaxZoubkov" target="_blank" rel="noopener noreferrer" class="badge badge-success">Github</a></li>
+                        </ul>
+                    </li>
+                    <li style="display: inline-block">
+                        <ul>
+                            <li style="list-style-type: none">Shane Wynne</li>
+                            <li style="list-style-type: none">Email: wynnin11@gmail.com</li>
+                            <li style="list-style-type: none">
+                                <a href="https://www.linkedin.com/in/shane-wynne/" target="_blank" rel="noopener noreferrer" class="badge badge-primary">LinkedIn</a></li>
+                            <li style="list-style-type: none">
+                                <a href="https://github.com/wynnin11" target="_blank" rel="noopener noreferrer" class="badge badge-success">Github</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% endblock footer %}
+        </div>
     </footer>
 </html>
 

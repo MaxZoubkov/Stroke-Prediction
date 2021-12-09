@@ -2,7 +2,6 @@ import flask
 from flask import Flask, url_for, render_template
 import pickle
 import pandas as pd
-import re
 import logging
 
 
@@ -17,14 +16,14 @@ def main():
         return render_template('main.html')
 
     if flask.request.method == 'POST':
-        app.logger.info(flask.request.form)    # useful to see what is submitted with the form
+        # app.logger.info(flask.request.form)    # useful to see what is submitted with the form
         
         input_dict = flask.request.form.to_dict()
-        app.logger.info(input_dict)
+        # app.logger.info(input_dict)
 
         with open('model/decision_tree_model.sav', 'rb') as f:
             model = pickle.load(f)
-            app.logger.info(model)
+            # app.logger.info(model)
 
         # feeding the model and outputting to the page
 
@@ -51,17 +50,17 @@ def main():
             else:
                 input_list.append(0)
         
-        app.logger.info(input_list)
+        # app.logger.info(input_list)
         
         df = pd.DataFrame(data=[input_list], columns=[feature_list])
-        app.logger.info(df)
+        # app.logger.info(df)
         
 
         # prediction here
         prediction = model.predict(df)
         probability = model.predict_proba(df)
-        app.logger.info(prediction)
-        app.logger.info(probability)
+        # app.logger.info(prediction)
+        # app.logger.info(probability)
         
         prediction = prediction[0]
         probability = probability[0,1]
